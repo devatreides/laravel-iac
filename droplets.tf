@@ -1,9 +1,9 @@
 resource "digitalocean_droplet" "web" {
     count = var.countDroplets
-    image = "ubuntu-20-04-x64"
+    image = var.dropletImageOS
     name = "${var.dropletSufixName}-${count.index}"
-    region = "nyc1"
-    size = "s-1vcpu-1gb"
+    region = var.dropletRegion
+    size = var.dropletHardwareConfig
 
     ssh_keys = [
         data.digitalocean_ssh_key.terraform-ci.id
@@ -27,7 +27,7 @@ resource "digitalocean_droplet" "web" {
     }
 
     provisioner "local-exec" {
-        command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -u root -i '${self.ipv4_address},' --private-key ${var.pvtkey} -e 'pub_key=${var.pubkey}' playbooks/preconfig-server.yml"
+        command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -u root -i '${self.ipv4_address},' --private-key ${var.pvtkey} -e 'pub_key=${var.pubkey} php_version=${var.phpVersion}' ansible/playbooks/preconfig-server.yml"
     }
 }
 

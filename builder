@@ -7,13 +7,13 @@ if [ "$1" == "up" ]; then
 
     terraform plan
 
-    terraform apply
+    terraform apply -auto-approve
 elif [ "$1" == "plan" ]; then
     terraform init
 
     terraform plan
 elif [ "$1" == "down" ]; then
-    terraform destroy
+    terraform destroy -auto-approve
 else
     echo "Command not found"
 fi
