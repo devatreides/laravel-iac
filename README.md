@@ -1,4 +1,3 @@
-![laravel-iac](./github/img/laravel-iac.png)
 
 ____
 
