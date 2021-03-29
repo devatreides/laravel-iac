@@ -21,7 +21,7 @@ $ chmod +x builder
 
 - Create a `.env` based on .env.example file and fulfill the variables with the right value
 
-- Run the command to up the infrastructure:
+- Run the command to up the infrastructure + server:
 
 ```bash
 $ ./builder up
