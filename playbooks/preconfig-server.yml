@@ -1,0 +1,92 @@
+- become: yes
+  hosts: all
+  name: preconfig-server
+  tasks:
+    - name: Add the user 'admin' and add it to 'sudo'
+      user:
+        name: admin
+        group: sudo
+
+    - name: Add the user 'admin' and add it to 'admin'
+      user:
+        name: admin
+        group: admin
+
+    - name: Add SSH key to 'admin'
+      authorized_key:
+        user: admin
+        state: present
+        key: "{{ lookup('file', pub_key) }}"
+
+    - name: Update all packages
+      apt:
+        upgrade: dist
+        update_cache: yes
+        cache_valid_time: 3600
+
+    - name: Install nginx
+      apt: name=nginx update_cache=yes state=latest
+
+    - name: Install packages
+      apt:
+        pkg:
+          - mcrypt 
+          - git 
+          - php8.0 
+          - php8.0-cli 
+          - php8.0-common 
+          - php8.0-mbstring 
+          - php8.0-gd 
+          - php8.0-intl 
+          - php8.0-xml 
+          - php8.0-mysql 
+          - php8.0-zip 
+          - php8.0-fpm 
+          - php8.0-bcmath 
+          - php8.0-curl 
+          - php8.0-pgsql
+          
+    - name: Install database
+      apt: name=postgresql-12 update_cache=yes state=latest
+
+    - name: Install node
+      apt: name=nodejs update_cache=yes state=latest
+    
+    - name: Install npm
+      apt: name=npm update_cache=yes state=latest
+
+    - name: install composer
+      shell: curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+      args:
+        creates: /usr/local/bin/composer
+    
+    - name: Configure nginx
+      template: src=./../templates/nginx/nginx.conf dest=/etc/nginx/nginx.conf
+      notify:
+        - restart php8.0-fpm
+        - restart nginx
+    
+    - name: Configure virtualhost
+      template: src=./../templates/nginx/default.conf dest=/etc/nginx/sites-available/default
+      notify:
+        - restart php8.0-fpm
+        - restart nginx
+
+    - name: Configure PHP pool
+      template: src=./../templates/php8.0/www.conf dest=/etc/php/8.0/fpm/pool.d/www.conf
+      notify:
+        - restart php8.0-fpm
+    
+    - name: Define 'admin' as owner of /var/www/html folder
+      win_owner:
+        path: /var/www/html
+        user: admin
+        recurse: True
+  
+  
+  handlers:
+    - name: restart php8.0-fpm
+      service: name=php8.0-fpm state=restarted
+
+    - name: restart nginx
+      service: name=nginx state=restarted
