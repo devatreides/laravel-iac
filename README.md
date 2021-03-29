@@ -1,4 +1,6 @@
-
+<div align="center">
+	<img  width="600" height="350" src="./.github/img/laravel-iac.png" alt="Awesome Beer & Code">
+</div>
 ____
 
 ### Prerequisites
