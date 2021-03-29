@@ -1,9 +1,12 @@
 <div align="center">
 	<img  width="600" height="350" src="./.github/img/laravel-iac.png" alt="Awesome Beer & Code">
 </div>
-____
 
-This repository uses Terraform to provisioning resources and Ansible to configure the instances in the Digital Ocean cloud. These techs combined allow me to versioning my host infrstructure and build a server fully configured for Laravel apps with just a couple of terminal commands and no manual installations (after the prerequisites step). The repo also allows me to create multiple using the same command.
+It's always good to see something new in programming and even better if that "new" improves your work a little. For me, this is IaC. For those who don't know, IaC means *Infrastructure as code*. It's a way to program your infrastructure, versioning it on github and deploying it to a cloud service like Amazon, Digital Ocean or Azure ... as you probably do with web systems. Since I first met IaC, I have been fascinated and decided to learn at least some basic things about it. So, this repository is my experimental lab and I'm still studying, but ... I thought it would be nice to share what I've learned so far. This is just the code you can play with, but I intend to write some articles explaining the magic behind this repo. For now, feel free to use and surprise yourself, as it happened to me.
+
+______
+
+This repository uses Terraform to provisioning resources and Ansible to configure the instances in the Digital Ocean cloud. These techs combined allow me to versioning my host infrstructure and build a server fully configured for Laravel apps with just a couple of terminal commands and no manual installations (after the prerequisites step, of course). The repo also allows me to create multiple droplets using the same command.
 
 The droplets built with this repository will have the following software configuration:
   - PHP (selected version)
