@@ -6,7 +6,7 @@ ____
 This repository uses Terraform to provisioning resources and Ansible to configure the instances in the Digital Ocean cloud. These techs combined allow me to versioning my host infrstructure and build a server fully configured for Laravel apps with just a couple of terminal commands and no manual installations (after the prerequisites step). The repo also allows me to create multiple using the same command.
 
 The droplets built with this repository will have the following software configuration:
-  - PHP (with selected version)
+  - PHP (selected version)
   - Postgresql 12
   - Composer
   - Node
@@ -99,17 +99,17 @@ Some vars have predefined values and will break the build if something different
 
 *TF_VAR_dropletHardwareConfig*: accept only the available specs for droplets in the Digital Ocean repository, according to the selected region:
 
-| **value**    | **vCPUs** | **RAM (GB)** | **Disk (GB)** | **Price ($/monthly)** | **Type**               | **Available in**                                            |
-|--------------|-----------|--------------|---------------|-----------------------|------------------------|-------------------------------------------------------------|
-| s-1vcpu-1gb  | 1         | 1            | 25            | 5                     | basic                  | ams2,ams3,blr1,fra1,lon1,nyc1,nyc2,nyc3,sfo1,sfo3,sgp1,tor1 |
-| s-1vcpu-2gb  | 1         | 2            | 50            | 10                    | basic                  | ams2,ams3,blr1,fra1,lon1,nyc1,nyc2,nyc3,sfo1,sfo3,sgp1,tor1 |
-| s-2vcpu-2gb  | 2         | 2            | 60            | 15                    | basic                  | ams2,ams3,blr1,fra1,lon1,nyc1,nyc2,nyc3,sfo1,sfo3,sgp1,tor1 |
-| s-2vcpu-4gb  | 2         | 4            | 80            | 20                    | basic                  | ams2,ams3,blr1,fra1,lon1,nyc1,nyc2,nyc3,sfo1,sfo3,sgp1,tor1 |
-| s-4vcpu-8gb  | 4         | 8            | 160           | 40                    | basic                  | ams2,ams3,blr1,fra1,lon1,nyc1,nyc2,nyc3,sfo1,sfo3,sgp1,tor1 |
-| c-2          | 2         | 4            | 25            | 40                    | CPU Optimized          | ams3,blr1,fra1,lon1,nyc1,nyc3,sfo3,sgp1,tor1                |
-| g-2vcpu-8gb  | 2         | 8            | 25            | 60                    | General Purpose        | ams3,fra1,lon1,nyc1,nyc3,sfo3,sgp1                          |
-| gd-2vcpu-8gb | 2         | 8            | 50            | 65                    | General Purpose 2x SSD | ams3,fra1,lon1,nyc1,nyc3,sfo3,sgp1                          |
-| s-8vcpu-16gb | 8         | 16           | 320           | 80                    | basic                  | ams2,ams3,blr1,fra1,lon1,nyc1,nyc2,nyc3,sfo1,sfo3,sgp1,tor1 |
-| m-2vcpu-16gb | 2         | 16           | 50            | 80                    | Memory Optimized       | ams3,blr1,lon1,nyc1,nyc3,sfo3,sgp1,tor1                     |
+| **value**    | **vCPUs** | **RAM (GB)** | **Disk (GB)** | **Price ($/month)** | **Type**         | **Available in**                                            |
+|--------------|-----------|--------------|---------------|---------------------|------------------|-------------------------------------------------------------|
+| s-1vcpu-1gb  | 1         | 1            | 25            | 5                   | basic            | ams2,ams3,blr1,fra1,lon1,nyc1,nyc2,nyc3,sfo1,sfo3,sgp1,tor1 |
+| s-1vcpu-2gb  | 1         | 2            | 50            | 10                  | basic            | ams2,ams3,blr1,fra1,lon1,nyc1,nyc2,nyc3,sfo1,sfo3,sgp1,tor1 |
+| s-2vcpu-2gb  | 2         | 2            | 60            | 15                  | basic            | ams2,ams3,blr1,fra1,lon1,nyc1,nyc2,nyc3,sfo1,sfo3,sgp1,tor1 |
+| s-2vcpu-4gb  | 2         | 4            | 80            | 20                  | basic            | ams2,ams3,blr1,fra1,lon1,nyc1,nyc2,nyc3,sfo1,sfo3,sgp1,tor1 |
+| s-4vcpu-8gb  | 4         | 8            | 160           | 40                  | basic            | ams2,ams3,blr1,fra1,lon1,nyc1,nyc2,nyc3,sfo1,sfo3,sgp1,tor1 |
+| c-2          | 2         | 4            | 25            | 40                  | CPU Optimized    | ams3,blr1,fra1,lon1,nyc1,nyc3,sfo3,sgp1,tor1                |
+| g-2vcpu-8gb  | 2         | 8            | 25            | 60                  | General          | ams3,fra1,lon1,nyc1,nyc3,sfo3,sgp1                          |
+| gd-2vcpu-8gb | 2         | 8            | 50            | 65                  | General 2x SSD   | ams3,fra1,lon1,nyc1,nyc3,sfo3,sgp1                          |
+| s-8vcpu-16gb | 8         | 16           | 320           | 80                  | basic            | ams2,ams3,blr1,fra1,lon1,nyc1,nyc2,nyc3,sfo1,sfo3,sgp1,tor1 |
+| m-2vcpu-16gb | 2         | 16           | 50            | 80                  | Memory Optimized | ams3,blr1,lon1,nyc1,nyc3,sfo3,sgp1,tor1                     |
 
 
