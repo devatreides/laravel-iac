@@ -54,6 +54,9 @@ $ ./builder up
 $ ./builder down
 ```
 
+#### After the build
+When the script finishes the build, you will see the droplet(s) info in your Digitalocean dashboard and in the final terminal output (just name and ip address here). You will also find a **admin** user in the instances, which is the `/var/www/html` owner along with the nginx and PHP config. This is to allows you to clone your repo and do your stuff without concerns about permissions and root usage.
+
 ### Environment Variables:
 
 The repo uses some env vars to define aspects of the server that will be different on each situation, such as server name, hardware specs, php version and more. Only **TF_VAR_dotoken**,**TF_VAR_pvtkey** and **TF_VAR_pubkey** are mandatory. The meaning and the default value of each env var is described in `variables.tf` file.
