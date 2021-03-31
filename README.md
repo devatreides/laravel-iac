@@ -7,7 +7,7 @@ It's always good to see something new in programming and even better if that "ne
 ##### * *Tested only in Debian based OS (like Linux Mint or Ubuntu) and WSL2*
 ______
 
-This repository uses Terraform to provisioning resources and Ansible to configure the instances in the Digital Ocean cloud. These techs combined allow me to versioning my host infrstructure and build a server fully configured for Laravel apps with just a couple of terminal commands and no manual installations (after the prerequisites step, of course). The repo also allows me to create multiple droplets using the same command.
+This repository uses Terraform to provisioning resources and Ansible to configure the instances in the Digital Ocean cloud. These techs combined allow me to versioning my host infrastructure and build a server fully configured for Laravel apps with just a couple of terminal commands and no manual installations (after the prerequisites step, of course). The repo also allows me to create multiple droplets using the same command.
 
 The droplets built with this repository will have the following software configuration:
   - PHP (selected version)
