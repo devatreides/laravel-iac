@@ -119,4 +119,19 @@ Some vars have predefined values and will break the build if something different
 | s-8vcpu-16gb | 8         | 16           | 320           | 80                  | basic            | ams2,ams3,blr1,fra1,lon1,nyc1,nyc2,nyc3,sfo1,sfo3,sgp1,tor1 |
 | m-2vcpu-16gb | 2         | 16           | 50            | 80                  | Memory Optimized | ams3,blr1,lon1,nyc1,nyc3,sfo3,sgp1,tor1                     |
 
+#### *example of filled .env file*
+```go
+//mandatory:
+export TF_VAR_dotoken="mypersonalaccesstoken"
+export TF_VAR_pvtkey="/home/tom/.ssh/id_rsa"
+export TF_VAR_pubkey="/home/tom/.ssh/id_rsa.pub"
+
+//optional (if you not define a value, the script will use the default value from variables.tf)
+export TF_VAR_countDroplets=2
+export TF_VAR_dropletImageOS="debian-10-x64"
+export TF_VAR_dropletSufixName="webserver"
+export TF_VAR_dropletRegion="nyc1"
+export TF_VAR_dropletHardwareConfig="s-2vcpu-2gb"
+export TF_VAR_phpVersion="8.0"
+```
 
