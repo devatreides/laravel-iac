@@ -62,16 +62,15 @@
     
     - name: Configure nginx
       template: src=./../../templates/nginx/nginx.conf dest=/etc/nginx/nginx.conf
-      notify:
-        - restart php-fpm
-        - restart nginx
+      # notify:
+      #   - restart php-fpm
+      #   - restart nginx
     
     - name: Configure virtualhost
       template: src=./../../templates/php/{{ php_version }}/default.conf dest=/etc/nginx/sites-available/default
-      notify:npm run prod
-      
-        - restart php-fpm
-        - restart nginx
+      # notify:
+      #   - restart php-fpm
+      #   - restart nginx
 
     - name: Configure PHP pool
       copy: 
@@ -80,8 +79,8 @@
         owner: root
         group: root
         mode: 0644
-      notify:
-        - restart php-fpm
+      # notify:
+      #   - restart php-fpm
     
     - name: Define 'admin' as owner of /var/www/html folder
       file: 
